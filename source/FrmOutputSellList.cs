@@ -19,7 +19,7 @@ namespace BooksManageSystem
         private void FrmOutputSellList_Load(object sender, EventArgs e)
         {
             dtp_Start.Value = DateTime.Parse(DateTime.Now.AddMonths(-2).ToString("yyyy-MM-01 00:00:00"));
-            dtp_End.Value = DateTime.Parse(DateTime.Now.AddMonths(1).ToString("yyyy-MM-01 00:00:00"));
+            dtp_End.Value = DateTime.Parse(DateTime.Now.AddMonths(1).ToString("yyyy-MM-01 00:00:00")).AddSeconds(-1);
         }
 
         public DateTime Start;

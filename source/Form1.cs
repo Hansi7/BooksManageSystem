@@ -277,16 +277,7 @@ namespace BooksManageSystem
             }
         }
 
-        private void btn_ShowAll_Click(object sender, EventArgs e)
-        {
-            reload();
-        }
 
-        private void btn_Search_Click(object sender, EventArgs e)
-        {
-            var list = con.GetBookListByName(txt_Search.Text.Trim());
-            fillListView(list);
-        }
 
         private void menu_ExcelOutBookList_Click(object sender, EventArgs e)
         {
@@ -329,35 +320,22 @@ namespace BooksManageSystem
             //MessageBox.Show("H为Grace定制的图书管理！\r\n\r\n                2014年4月12日", "Grace的图书管理", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btn_in_Return_Click(object sender, EventArgs e)
-        {
-            RETURN_BOOK();
-        }
-
-        private void btn_out_Sell_Click(object sender, EventArgs e)
-        {
-            SELL_BOOK();
-        }
-
-        private void btn_out_Give_Click(object sender, EventArgs e)
-        {
-            LINGQU_BOOK();
-        }
-
-        private void btn_OPLOGALL_Click(object sender, EventArgs e)
-        {
-            new FrmLOGViewer(con.GetOPLogALL()).ShowDialog();
-        }
-
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             //pl_ListView.Size = new Size(pl_ListView.Size.Width, this.Size.Height - he);
             listView1.Size = new Size(this.Size.Width - listView1.Location.X - 25 , this.Size.Height - listView1.Location.Y - 45);
         }
 
-        private void btn_in_Buy_Click(object sender, EventArgs e)
+        private void menu_BigList_Click(object sender, EventArgs e)
         {
-            BUY_BookList();
+            try
+            {
+                new FrmBigListViewer().ShowDialog();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         #region 书籍变更逻辑
@@ -500,20 +478,107 @@ namespace BooksManageSystem
             }
         }
 
-        #endregion
-
-
-
-        private void menu_BigList_Click(object sender, EventArgs e)
+        void Lingqu_Booklist()
         {
             try
             {
-                new FrmBigListViewer().ShowDialog();
+                if (booklist == null)
+                {
+                    booklist = con.GetBookList();
+                }
+
+                var maker = new FrmBookListMaker(booklist, "领取-列表编辑器", "确认领取");
+                if (maker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    int i = 0;
+                    foreach (var item in maker.BookListToOperate.Values)
+                    {
+                        i = i + item;
+                    }
+                    foreach (KeyValuePair<Book, int> item in maker.BookListToOperate)
+                    {
+                        con.Lingqu(item.Key.BookID, item.Value, maker.NoteTag, maker.OperTime);
+                    }
+                    reload();
+                    MessageBox.Show("领取成功!", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);   
+                MessageBox.Show("操作失败,错误消息:" + err.Message);
             }
+
+        }
+
+        void out_sell_BookList()
+        {
+            try
+            {
+                if (booklist == null)
+                {
+                    booklist = con.GetBookList();
+                }
+
+                var maker = new FrmBookListMaker(booklist, "销售-列表编辑器", "确认售书");
+                if (maker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    int i = 0;
+                    foreach (var item in maker.BookListToOperate.Values)
+                    {
+                        i = i + item;
+                    }
+                    foreach (KeyValuePair<Book, int> item in maker.BookListToOperate)
+                    {
+                        con.SellBookByID(item.Key.BookID, item.Value, maker.NoteTag, maker.OperTime);
+                    }
+                    reload();
+                    MessageBox.Show("售书成功!", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("操作失败,错误消息:" + err.Message);
+            }
+        }
+        #endregion
+        #region ButtonCalls
+
+        private void btn_ShowAll_Click(object sender, EventArgs e)
+        {
+            reload();
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            var list = con.GetBookListByName(txt_Search.Text.Trim());
+            fillListView(list);
+        }
+
+        private void btn_in_Return_Click(object sender, EventArgs e)
+        {
+            RETURN_BOOK();
+        }
+
+        private void btn_out_Sell_Click(object sender, EventArgs e)
+        {
+            SELL_BOOK();
+        }
+
+        private void btn_out_Give_Click(object sender, EventArgs e)
+        {
+            LINGQU_BOOK();
+        }
+
+        private void btn_OPLOGALL_Click(object sender, EventArgs e)
+        {
+            new FrmLOGViewer(con.GetOPLogALL()).ShowDialog();
+        }
+
+        private void btn_in_Buy_Click(object sender, EventArgs e)
+        {
+            BUY_BookList();
         }
 
         private void btn_BuyListQuery_Click(object sender, EventArgs e)
@@ -528,43 +593,20 @@ namespace BooksManageSystem
             }
         }
 
+        private void btn_out_Sell_List_Click(object sender, EventArgs e)
+        {
+            out_sell_BookList();
+        }
+
+
+
         private void btn_out_Give_booklist_Click(object sender, EventArgs e)
         {
             Lingqu_Booklist();
         }
 
-        private void Lingqu_Booklist()
-        {
-            try
-            {
-                if (booklist==null)
-                {
-                    booklist = con.GetBookList();
-                }
+        #endregion
 
-                var maker = new FrmBookListMaker(booklist, "领取-列表编辑器","确认领取");
-                if (maker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    int i = 0;
-                    foreach (var item in maker.BookListToOperate.Values)
-                    {
-                        i = i + item;
-                    }
-                    foreach (KeyValuePair<Book, int> item in maker.BookListToOperate)
-                    {
-                        con.Lingqu(item.Key.BookID, item.Value, maker.NoteTag, maker.OperTime);
-                    }
-                    reload();
-                    MessageBox.Show("领取成功!","成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show("操作失败,错误消息:" + err.Message);
-            }
-
-        }
         #region 升级
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -596,6 +638,8 @@ namespace BooksManageSystem
             }
         } 
         #endregion
+
+
 
     }
 }

@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // button1
@@ -64,6 +65,8 @@
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
             this.listView1.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.Location = new System.Drawing.Point(12, 33);
             this.listView1.Name = "listView1";
@@ -108,6 +111,10 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "列表详细";
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 150;
+            // 
             // FrmBookListViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -139,5 +146,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

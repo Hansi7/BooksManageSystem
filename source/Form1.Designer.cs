@@ -51,6 +51,7 @@
             this.初始化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_init = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_About = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,7 +73,7 @@
             this.btn_out_Give_booklist = new System.Windows.Forms.Button();
             this.btn_BuyListQuery = new System.Windows.Forms.Button();
             this.btn_OPLOGALL = new System.Windows.Forms.Button();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_out_Sell_List = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pl_BtnPlanel.SuspendLayout();
             this.SuspendLayout();
@@ -252,6 +253,13 @@
             this.toolStripMenuItem1.Text = "数据库升级1.0到1.1";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(182, 22);
+            this.toolStripMenuItem2.Text = "数据库升级1.1到1.3";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
             // menu_About
             // 
             this.menu_About.Name = "menu_About";
@@ -389,7 +397,7 @@
             this.btn_out_Sell.Name = "btn_out_Sell";
             this.btn_out_Sell.Size = new System.Drawing.Size(91, 32);
             this.btn_out_Sell.TabIndex = 12;
-            this.btn_out_Sell.Text = "销售";
+            this.btn_out_Sell.Text = "销售￥";
             this.btn_out_Sell.UseVisualStyleBackColor = false;
             this.btn_out_Sell.Click += new System.EventHandler(this.btn_out_Sell_Click);
             // 
@@ -398,7 +406,7 @@
             this.btn_out_Give.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(204)))), ((int)(((byte)(90)))));
             this.btn_out_Give.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_out_Give.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_out_Give.Location = new System.Drawing.Point(4, 135);
+            this.btn_out_Give.Location = new System.Drawing.Point(4, 167);
             this.btn_out_Give.Name = "btn_out_Give";
             this.btn_out_Give.Size = new System.Drawing.Size(91, 32);
             this.btn_out_Give.TabIndex = 13;
@@ -408,6 +416,7 @@
             // 
             // pl_BtnPlanel
             // 
+            this.pl_BtnPlanel.Controls.Add(this.btn_out_Sell_List);
             this.pl_BtnPlanel.Controls.Add(this.btn_out_Give_booklist);
             this.pl_BtnPlanel.Controls.Add(this.btn_BuyListQuery);
             this.pl_BtnPlanel.Controls.Add(this.btn_OPLOGALL);
@@ -425,7 +434,7 @@
             this.btn_out_Give_booklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(204)))), ((int)(((byte)(90)))));
             this.btn_out_Give_booklist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_out_Give_booklist.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_out_Give_booklist.Location = new System.Drawing.Point(4, 173);
+            this.btn_out_Give_booklist.Location = new System.Drawing.Point(4, 202);
             this.btn_out_Give_booklist.Name = "btn_out_Give_booklist";
             this.btn_out_Give_booklist.Size = new System.Drawing.Size(91, 32);
             this.btn_out_Give_booklist.TabIndex = 16;
@@ -461,12 +470,18 @@
             this.btn_OPLOGALL.UseVisualStyleBackColor = false;
             this.btn_OPLOGALL.Click += new System.EventHandler(this.btn_OPLOGALL_Click);
             // 
-            // toolStripMenuItem2
+            // btn_out_Sell_List
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(182, 22);
-            this.toolStripMenuItem2.Text = "数据库升级1.1到1.3";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.btn_out_Sell_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_out_Sell_List.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_out_Sell_List.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_out_Sell_List.Location = new System.Drawing.Point(4, 132);
+            this.btn_out_Sell_List.Name = "btn_out_Sell_List";
+            this.btn_out_Sell_List.Size = new System.Drawing.Size(91, 32);
+            this.btn_out_Sell_List.TabIndex = 17;
+            this.btn_out_Sell_List.Text = "批量销售";
+            this.btn_out_Sell_List.UseVisualStyleBackColor = false;
+            this.btn_out_Sell_List.Click += new System.EventHandler(this.btn_out_Sell_List_Click);
             // 
             // Form1
             // 
@@ -545,6 +560,7 @@
         private System.Windows.Forms.Button btn_BuyListQuery;
         private System.Windows.Forms.Button btn_out_Give_booklist;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Button btn_out_Sell_List;
     }
 }
 

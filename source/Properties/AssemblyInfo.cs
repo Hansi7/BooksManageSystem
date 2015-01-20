@@ -9,8 +9,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription(@"用四种书籍数量变更的方式（购入，归还，销售，领用）对书籍进行简单的管理，其中销售的书籍可以单独导出列表。
 2014.6.11更改了控件的排列，修复在过小的屏幕上不显示按钮的问题。 
 2014.7.11增加了批量领取书籍，以及书单的操作。
+2015.1.20增加的批量售书的功能，修正书单在XP系统下显示不全的问题。添加操作记录列表下的右键菜单。方便删除操作记录。
 程序编码:@麦田呱呱
-日期:2014年7月11日")]
+日期:2015年1月21日")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Grace软件")]
 [assembly: AssemblyProduct("BooksManageSystem")]
@@ -36,5 +37,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.3.0.0")]
-[assembly: AssemblyFileVersion("1.3.0.0")]
+[assembly: AssemblyVersion("1.4.0.0")]
+[assembly: AssemblyFileVersion("1.4.0.0")]

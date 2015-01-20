@@ -170,7 +170,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmEditOP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FrmEditOP";
+            this.Text = "修改操作记录";
             this.Load += new System.EventHandler(this.FrmEditOP_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

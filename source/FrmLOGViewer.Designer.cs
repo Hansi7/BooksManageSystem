@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLOGViewer));
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,7 +43,11 @@
             this.分类显示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_del = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cMenu_Edit_oplog = new System.Windows.Forms.ToolStripMenuItem();
+            this.cMenu_Del_oplog = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -56,6 +61,7 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listView1.FullRowSelect = true;
@@ -143,6 +149,28 @@
             this.menu_del.Text = "删除记录";
             this.menu_del.Click += new System.EventHandler(this.menu_del_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenu_Edit_oplog,
+            this.cMenu_Del_oplog});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            // 
+            // cMenu_Edit_oplog
+            // 
+            this.cMenu_Edit_oplog.Name = "cMenu_Edit_oplog";
+            this.cMenu_Edit_oplog.Size = new System.Drawing.Size(124, 22);
+            this.cMenu_Edit_oplog.Text = "修改记录";
+            this.cMenu_Edit_oplog.Click += new System.EventHandler(this.cMenu_Edit_oplog_Click);
+            // 
+            // cMenu_Del_oplog
+            // 
+            this.cMenu_Del_oplog.Name = "cMenu_Del_oplog";
+            this.cMenu_Del_oplog.Size = new System.Drawing.Size(124, 22);
+            this.cMenu_Del_oplog.Text = "删除记录";
+            this.cMenu_Del_oplog.Click += new System.EventHandler(this.cMenu_Del_oplog_Click);
+            // 
             // FrmLOGViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -159,6 +187,7 @@
             this.Load += new System.EventHandler(this.FrmLOGViewer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +208,8 @@
         private System.Windows.Forms.ToolStripMenuItem 分类显示ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu_edit;
         private System.Windows.Forms.ToolStripMenuItem menu_del;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cMenu_Edit_oplog;
+        private System.Windows.Forms.ToolStripMenuItem cMenu_Del_oplog;
     }
 }

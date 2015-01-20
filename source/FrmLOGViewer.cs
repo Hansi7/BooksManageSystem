@@ -76,11 +76,16 @@ namespace BooksManageSystem
 
         private void menu_edit_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count==1)
-	        {
+            Edit_OP_LOG();
+        }
+
+        private void Edit_OP_LOG()
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
                 OPLOG log = listView1.SelectedItems[0].Tag as OPLOG;
                 var eop = new FrmEditOP(log);
-                if (eop.ShowDialog()== System.Windows.Forms.DialogResult.OK)
+                if (eop.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     if (con.ModifyOPLog(log.OPID, eop.DateOP, eop.Operator) > 0)
                     {
@@ -92,33 +97,37 @@ namespace BooksManageSystem
                         MessageBox.Show("修改失败！");
                     }
                 }
-	        }
+            }
             else
             {
                 MessageBox.Show("请选择一项进行修改");
             }
-            
         }
 
         private void menu_del_Click(object sender, EventArgs e)
         {
+            Del_OP_LOG();
+        }
+
+        private void Del_OP_LOG()
+        {
             if (listView1.SelectedItems.Count == 1)
             {
                 OPLOG log = listView1.SelectedItems[0].Tag as OPLOG;
-                string op=string.Empty;
-                if (log.op== EnumOP.购 || log.op == EnumOP.还)
-	            {
+                string op = string.Empty;
+                if (log.op == EnumOP.购 || log.op == EnumOP.还)
+                {
                     op = "减少";
-	            }
-                else if (log.op== EnumOP.领 || log.op == EnumOP.售)
-	            {
-		            op = "增加";
-	            }
+                }
+                else if (log.op == EnumOP.领 || log.op == EnumOP.售)
+                {
+                    op = "增加";
+                }
                 string message = "删除本记录会使《" + log.BookName + "》的数量" + op + log.OPCount.ToString() + "。本操作不可撤销。确认删除？";
 
-                var res = MessageBox.Show(message,"确认删除本条记录？", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var res = MessageBox.Show(message, "确认删除本条记录？", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
-                if (res== System.Windows.Forms.DialogResult.Yes)
+                if (res == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (con.UndoOPByOPID(log.OPID) > 0)
                     {
@@ -129,7 +138,7 @@ namespace BooksManageSystem
                 }
                 else if (res == System.Windows.Forms.DialogResult.No)
                 {
-                     
+
                 }
                 else if (res == System.Windows.Forms.DialogResult.Cancel)
                 {
@@ -142,5 +151,19 @@ namespace BooksManageSystem
                 MessageBox.Show("请选择一项进行修改");
             }
         }
+
+        private void cMenu_Del_oplog_Click(object sender, EventArgs e)
+        {
+            Del_OP_LOG();
+        }
+
+        private void cMenu_Edit_oplog_Click(object sender, EventArgs e)
+        {
+            Edit_OP_LOG();
+        }
+
+
+
+
     }
 }
