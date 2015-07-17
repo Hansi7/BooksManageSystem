@@ -254,8 +254,50 @@ namespace BooksManageSystem
                 sheet.Cells["E:E"].Style.Numberformat.Format = "yyyy-mm-dd";
                 ep.SaveAs(new FileInfo(fDia.FileName));
             }
-
         }
+
+        void outputExcelOutGiveList(DateTime start, DateTime end)
+        {//编号, 书名 , 定价, 数量, 备注信息 , 小计
+
+            var fDia = new SaveFileDialog();
+            fDia.Filter = "Excel files (*.xlsx)|*.xlsx";
+            if (fDia.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (File.Exists(fDia.FileName))
+                {
+                    File.Delete(fDia.FileName);
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            var dt = con.GetHandOutList(start, end);
+            using (OfficeOpenXml.ExcelPackage ep = new OfficeOpenXml.ExcelPackage())
+            {
+                var sheet = ep.Workbook.Worksheets.Add("Table1");
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    sheet.Cells[1, i + 1].Value = dt.Columns[i].ColumnName;
+                }
+
+                int row = 1;
+                foreach (DataRow r in dt.Rows)
+                {
+                    row++;
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        sheet.Cells[row, i + 1].Value = r[i];
+                    }
+                }
+                sheet.Cells["A:G"].AutoFitColumns();
+                sheet.Cells["A1:G1"].Style.Font.Bold = true;
+                sheet.Cells["E:E"].Style.Numberformat.Format = "yyyy-mm-dd";
+                ep.SaveAs(new FileInfo(fDia.FileName));
+            }
+        }
+
 
         private void menu_newBook_Click(object sender, EventArgs e)
         {
@@ -292,6 +334,16 @@ namespace BooksManageSystem
                 outputExcelSellList(olist.Start, olist.End);
             }
         }
+
+        private void menu_TotalOut_Click(object sender, EventArgs e)
+        {
+            FrmOutputSellList olist = new FrmOutputSellList();
+            if (olist.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                outputExcelOutGiveList(olist.Start, olist.End);
+            }
+        }
+
 
         private void menu_init_Click(object sender, EventArgs e)
         {
@@ -638,6 +690,8 @@ namespace BooksManageSystem
             }
         } 
         #endregion
+
+
 
 
 

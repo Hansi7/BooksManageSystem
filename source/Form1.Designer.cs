@@ -70,10 +70,11 @@
             this.btn_out_Sell = new System.Windows.Forms.Button();
             this.btn_out_Give = new System.Windows.Forms.Button();
             this.pl_BtnPlanel = new System.Windows.Forms.Panel();
+            this.btn_out_Sell_List = new System.Windows.Forms.Button();
             this.btn_out_Give_booklist = new System.Windows.Forms.Button();
             this.btn_BuyListQuery = new System.Windows.Forms.Button();
             this.btn_OPLOGALL = new System.Windows.Forms.Button();
-            this.btn_out_Sell_List = new System.Windows.Forms.Button();
+            this.menu_TotalOut = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pl_BtnPlanel.SuspendLayout();
             this.SuspendLayout();
@@ -107,33 +108,33 @@
             // menu_BUYBOOK
             // 
             this.menu_BUYBOOK.Name = "menu_BUYBOOK";
-            this.menu_BUYBOOK.Size = new System.Drawing.Size(140, 22);
+            this.menu_BUYBOOK.Size = new System.Drawing.Size(152, 22);
             this.menu_BUYBOOK.Text = "批量购书(&P)";
             this.menu_BUYBOOK.Click += new System.EventHandler(this.menu_BUYBOOK_Click);
             // 
             // menu_RETURNBOOK
             // 
             this.menu_RETURNBOOK.Name = "menu_RETURNBOOK";
-            this.menu_RETURNBOOK.Size = new System.Drawing.Size(140, 22);
+            this.menu_RETURNBOOK.Size = new System.Drawing.Size(152, 22);
             this.menu_RETURNBOOK.Text = "归还书籍(&R)";
             this.menu_RETURNBOOK.Click += new System.EventHandler(this.menu_RETURNBOOK_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(137, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // menu_SELLBOOK
             // 
             this.menu_SELLBOOK.Name = "menu_SELLBOOK";
-            this.menu_SELLBOOK.Size = new System.Drawing.Size(140, 22);
+            this.menu_SELLBOOK.Size = new System.Drawing.Size(152, 22);
             this.menu_SELLBOOK.Text = "销售书籍(&S)";
             this.menu_SELLBOOK.Click += new System.EventHandler(this.menu_SELLBOOK_Click);
             // 
             // menu_LINGQU
             // 
             this.menu_LINGQU.Name = "menu_LINGQU";
-            this.menu_LINGQU.Size = new System.Drawing.Size(140, 22);
+            this.menu_LINGQU.Size = new System.Drawing.Size(152, 22);
             this.menu_LINGQU.Text = "领取书籍(&E)";
             this.menu_LINGQU.Click += new System.EventHandler(this.menu_LINGQU_Click);
             // 
@@ -216,10 +217,11 @@
             // 销售统计ToolStripMenuItem
             // 
             this.销售统计ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_TotalSell});
+            this.menu_TotalSell,
+            this.menu_TotalOut});
             this.销售统计ToolStripMenuItem.Name = "销售统计ToolStripMenuItem";
-            this.销售统计ToolStripMenuItem.Size = new System.Drawing.Size(83, 21);
-            this.销售统计ToolStripMenuItem.Text = "销售统计(&T)";
+            this.销售统计ToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
+            this.销售统计ToolStripMenuItem.Text = "统计(&T)";
             // 
             // menu_TotalSell
             // 
@@ -429,6 +431,19 @@
             this.pl_BtnPlanel.Size = new System.Drawing.Size(98, 327);
             this.pl_BtnPlanel.TabIndex = 14;
             // 
+            // btn_out_Sell_List
+            // 
+            this.btn_out_Sell_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btn_out_Sell_List.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_out_Sell_List.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_out_Sell_List.Location = new System.Drawing.Point(4, 132);
+            this.btn_out_Sell_List.Name = "btn_out_Sell_List";
+            this.btn_out_Sell_List.Size = new System.Drawing.Size(91, 32);
+            this.btn_out_Sell_List.TabIndex = 17;
+            this.btn_out_Sell_List.Text = "批量销售";
+            this.btn_out_Sell_List.UseVisualStyleBackColor = false;
+            this.btn_out_Sell_List.Click += new System.EventHandler(this.btn_out_Sell_List_Click);
+            // 
             // btn_out_Give_booklist
             // 
             this.btn_out_Give_booklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(204)))), ((int)(((byte)(90)))));
@@ -470,18 +485,12 @@
             this.btn_OPLOGALL.UseVisualStyleBackColor = false;
             this.btn_OPLOGALL.Click += new System.EventHandler(this.btn_OPLOGALL_Click);
             // 
-            // btn_out_Sell_List
+            // menu_TotalOut
             // 
-            this.btn_out_Sell_List.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btn_out_Sell_List.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_out_Sell_List.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_out_Sell_List.Location = new System.Drawing.Point(4, 132);
-            this.btn_out_Sell_List.Name = "btn_out_Sell_List";
-            this.btn_out_Sell_List.Size = new System.Drawing.Size(91, 32);
-            this.btn_out_Sell_List.TabIndex = 17;
-            this.btn_out_Sell_List.Text = "批量销售";
-            this.btn_out_Sell_List.UseVisualStyleBackColor = false;
-            this.btn_out_Sell_List.Click += new System.EventHandler(this.btn_out_Sell_List_Click);
+            this.menu_TotalOut.Name = "menu_TotalOut";
+            this.menu_TotalOut.Size = new System.Drawing.Size(177, 22);
+            this.menu_TotalOut.Text = "导出Excel领取数据";
+            this.menu_TotalOut.Click += new System.EventHandler(this.menu_TotalOut_Click);
             // 
             // Form1
             // 
@@ -561,6 +570,7 @@
         private System.Windows.Forms.Button btn_out_Give_booklist;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.Button btn_out_Sell_List;
+        private System.Windows.Forms.ToolStripMenuItem menu_TotalOut;
     }
 }
 

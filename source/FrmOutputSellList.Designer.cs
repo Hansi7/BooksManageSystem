@@ -118,7 +118,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmOutputSellList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "导出销售数据";
+            this.Text = "导出数据";
             this.Load += new System.EventHandler(this.FrmOutputSellList_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -444,6 +444,25 @@ namespace BooksManageSystem
             return _dal_getSellList(start,end);
         }
 
+        /// <summary>
+        /// 领取导出
+        /// </summary>
+        /// <param name="dt_start"></param>
+        /// <param name="dt_end"></param>
+        /// <returns></returns>
+        public DataTable GetHandOutList(DateTime dt_start, DateTime dt_end)
+        {
+            int year = DateTime.Now.Year;
+            using (OleDbCommand comm = new OleDbCommand(@"SELECT   BOOKS.ID AS 编号, BOOKS.BOOKNAME AS 书名, BOOKS.PRICE AS 定价, OPERATE.OP_COUNT AS 数量, 
+                                                            OPERATE.OP_DATE AS 领取时间, OPERATE.OPERATOR AS 备注信息, 
+                                                            BOOKS.PRICE * OPERATE.OP_COUNT AS 小计
+                                                        FROM      (BOOKS INNER JOIN
+                                                            OPERATE ON BOOKS.ID = OPERATE.OP_BOOK_NO)
+                                                        WHERE   (OPERATE.OP = 2) AND (OPERATE.OP_DATE > CDATE('" + dt_start.ToString("yyyy-MM-dd HH:mm:ss") + "')) and (OPERATE.OP_DATE < CDATE('" + dt_end.ToString("yyyy-MM-dd HH:mm:ss") + "'))"))
+            {
+                return DBHelper.ExecuteDataTable(comm);
+            }
+        }
 
         #endregion
 

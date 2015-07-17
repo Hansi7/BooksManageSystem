@@ -14,7 +14,7 @@ namespace BooksManageSystem
 
         static DBHelper()
         {
-            conStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +  Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"DB.accdb");
+            conStr = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=""" +  Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"DB.accdb") + "\"";
         }
         //OleDbCommand comm = new OleDbCommand();
         public static DataTable ExecuteDataTable(OleDbCommand comm)
