@@ -142,8 +142,12 @@ namespace BooksManageSystem
                 throw new Exception("没有足够数量的书可供领取!");
             }
 
-            using (OleDbCommand comm = new OleDbCommand(@"update books set books_count = " + (c - count).ToString() + " where id = " + id.ToString()))
+            using (OleDbCommand comm = new OleDbCommand(@"update books set books_count = @ccount where id = @id"))
             {
+
+                comm.Parameters.AddWithValue("@ccount", c - count);
+                comm.Parameters.AddWithValue("@id", id);
+
                 DBHelper.ExecuteNonQuery(comm);
             }
 
@@ -177,8 +181,11 @@ namespace BooksManageSystem
         public int PurchaseBook(int id, int count, string oper, DateTime time, int bid)
         {
             int c = queryCountByID(id);
-            using (OleDbCommand comm = new OleDbCommand(@"update books set books_count = " + (c + count).ToString() + " where id = " + id.ToString()))
+            using (OleDbCommand comm = new OleDbCommand(@"update books set books_count = @books_count where id = @id"))
             {
+                comm.Parameters.AddWithValue("@books_count", c + count);
+                comm.Parameters.AddWithValue("@id", id);
+
                 DBHelper.ExecuteNonQuery(comm);
             }
 
@@ -259,8 +266,10 @@ namespace BooksManageSystem
         //查询书的数量OK
         private int queryCountByID(int id )
         {
-            using (OleDbCommand comm = new OleDbCommand(@"select books_count from books where id = " + id))
+            using (OleDbCommand comm = new OleDbCommand(@"select books_count from books where id = @id"))
             {
+
+                comm.Parameters.AddWithValue("@id", id);
                 return Convert.ToInt32(DBHelper.ExecuteScalar(comm));
             }
         }

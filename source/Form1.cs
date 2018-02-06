@@ -688,12 +688,16 @@ namespace BooksManageSystem
             {
                 MessageBox.Show("升级失败,可能已经升级过了。");
             }
-        } 
+        }
+
+
+
+
         #endregion
 
-
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

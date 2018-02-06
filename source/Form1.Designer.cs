@@ -48,6 +48,7 @@
             this.menu_ExcelOutBookList = new System.Windows.Forms.ToolStripMenuItem();
             this.销售统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_TotalSell = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_TotalOut = new System.Windows.Forms.ToolStripMenuItem();
             this.初始化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_init = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +75,7 @@
             this.btn_out_Give_booklist = new System.Windows.Forms.Button();
             this.btn_BuyListQuery = new System.Windows.Forms.Button();
             this.btn_OPLOGALL = new System.Windows.Forms.Button();
-            this.menu_TotalOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pl_BtnPlanel.SuspendLayout();
             this.SuspendLayout();
@@ -108,33 +109,33 @@
             // menu_BUYBOOK
             // 
             this.menu_BUYBOOK.Name = "menu_BUYBOOK";
-            this.menu_BUYBOOK.Size = new System.Drawing.Size(152, 22);
+            this.menu_BUYBOOK.Size = new System.Drawing.Size(140, 22);
             this.menu_BUYBOOK.Text = "批量购书(&P)";
             this.menu_BUYBOOK.Click += new System.EventHandler(this.menu_BUYBOOK_Click);
             // 
             // menu_RETURNBOOK
             // 
             this.menu_RETURNBOOK.Name = "menu_RETURNBOOK";
-            this.menu_RETURNBOOK.Size = new System.Drawing.Size(152, 22);
+            this.menu_RETURNBOOK.Size = new System.Drawing.Size(140, 22);
             this.menu_RETURNBOOK.Text = "归还书籍(&R)";
             this.menu_RETURNBOOK.Click += new System.EventHandler(this.menu_RETURNBOOK_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(137, 6);
             // 
             // menu_SELLBOOK
             // 
             this.menu_SELLBOOK.Name = "menu_SELLBOOK";
-            this.menu_SELLBOOK.Size = new System.Drawing.Size(152, 22);
+            this.menu_SELLBOOK.Size = new System.Drawing.Size(140, 22);
             this.menu_SELLBOOK.Text = "销售书籍(&S)";
             this.menu_SELLBOOK.Click += new System.EventHandler(this.menu_SELLBOOK_Click);
             // 
             // menu_LINGQU
             // 
             this.menu_LINGQU.Name = "menu_LINGQU";
-            this.menu_LINGQU.Size = new System.Drawing.Size(152, 22);
+            this.menu_LINGQU.Size = new System.Drawing.Size(140, 22);
             this.menu_LINGQU.Text = "领取书籍(&E)";
             this.menu_LINGQU.Click += new System.EventHandler(this.menu_LINGQU_Click);
             // 
@@ -229,6 +230,13 @@
             this.menu_TotalSell.Size = new System.Drawing.Size(177, 22);
             this.menu_TotalSell.Text = "导出Excel销售数据";
             this.menu_TotalSell.Click += new System.EventHandler(this.menu_TotalSell_Click);
+            // 
+            // menu_TotalOut
+            // 
+            this.menu_TotalOut.Name = "menu_TotalOut";
+            this.menu_TotalOut.Size = new System.Drawing.Size(177, 22);
+            this.menu_TotalOut.Text = "导出Excel领取数据";
+            this.menu_TotalOut.Click += new System.EventHandler(this.menu_TotalOut_Click);
             // 
             // 初始化ToolStripMenuItem
             // 
@@ -485,19 +493,23 @@
             this.btn_OPLOGALL.UseVisualStyleBackColor = false;
             this.btn_OPLOGALL.Click += new System.EventHandler(this.btn_OPLOGALL_Click);
             // 
-            // menu_TotalOut
+            // button1
             // 
-            this.menu_TotalOut.Name = "menu_TotalOut";
-            this.menu_TotalOut.Size = new System.Drawing.Size(177, 22);
-            this.menu_TotalOut.Text = "导出Excel领取数据";
-            this.menu_TotalOut.Click += new System.EventHandler(this.menu_TotalOut_Click);
+            this.button1.Location = new System.Drawing.Point(16, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.pl_BtnPlanel);
             this.Controls.Add(this.label2);
@@ -571,6 +583,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.Button btn_out_Sell_List;
         private System.Windows.Forms.ToolStripMenuItem menu_TotalOut;
+        private System.Windows.Forms.Button button1;
     }
 }
 
