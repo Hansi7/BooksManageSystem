@@ -8,6 +8,7 @@ namespace BooksManageSystem
 {
     internal class DBcon
     {
+        private string dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
 
         #region 书籍列表
         private DataTable _dal_getBookList()
@@ -119,7 +120,7 @@ namespace BooksManageSystem
             }
 
             using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values 
-(" + id + "," + ((int)EnumOP.售).ToString() + ",'" + time.ToString() + "'," + count.ToString() + ",'" + opertor + "'," + (c - count) + ")"))
+(" + id + "," + ((int)EnumOP.售).ToString() + ",'" + time.ToString(dateTimeFormat) + "'," + count.ToString() + ",'" + opertor + "'," + (c - count) + ")"))
             {
                 //INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
                 DBHelper.ExecuteNonQuery(comm);
@@ -193,7 +194,7 @@ namespace BooksManageSystem
             if (bid==0)
             {
                 using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values 
-(" + id + "," + ((int)EnumOP.购).ToString() + ",'" + time.ToString() + "'," + count.ToString() + ",'" + oper + "'," + (c + count) + ")"))
+(" + id + "," + ((int)EnumOP.购).ToString() + ",'" + time.ToString(dateTimeFormat) + "'," + count.ToString() + ",'" + oper + "'," + (c + count) + ")"))
                 {
                     //INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
                     DBHelper.ExecuteNonQuery(comm);
@@ -203,7 +204,7 @@ namespace BooksManageSystem
             else
             {
                 using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count,bid) values 
-(" + id + "," + ((int)EnumOP.购).ToString() + ",'" + time.ToString() + "'," + count.ToString() + ",'" + oper + "'," + (c + count) + "," + bid + ")"))
+(" + id + "," + ((int)EnumOP.购).ToString() + ",'" + time.ToString(dateTimeFormat) + "'," + count.ToString() + ",'" + oper + "'," + (c + count) + "," + bid + ")"))
                 {
                     //INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
                     DBHelper.ExecuteNonQuery(comm);
@@ -221,7 +222,7 @@ namespace BooksManageSystem
         /// <returns></returns>
         public int Blist(int totalcount, DateTime time)
         {
-            using (OleDbCommand comm = new OleDbCommand(@"insert into blist (bcount,bdate) values(" + totalcount + ",'" + time.ToString() + "')"))
+            using (OleDbCommand comm = new OleDbCommand(@"insert into blist (bcount,bdate) values(" + totalcount + ",'" + time.ToString(dateTimeFormat) + "')"))
             {
                 DBHelper.ExecuteNonQuery(comm);
             }
@@ -251,7 +252,7 @@ namespace BooksManageSystem
             }
 
             using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values 
-(" + id + "," + ((int)EnumOP.还).ToString() + ",'" + time.ToString() + "'," + count.ToString() + ",'" + oper + "'," + (c + count) + ")"))
+(" + id + "," + ((int)EnumOP.还).ToString() + ",'" + time.ToString(dateTimeFormat) + "'," + count.ToString() + ",'" + oper + "'," + (c + count) + ")"))
             {
                 //INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
                 DBHelper.ExecuteNonQuery(comm);
@@ -612,7 +613,7 @@ namespace BooksManageSystem
             sb.AppendLine("queryCountByID");
             sb.AppendLine(queryCountByID(1).ToString());
             sb.AppendLine("Lingqu");
-            sb.AppendLine(Lingqu(1, 7, "ling", DateTime.Now).ToString());
+            sb.AppendLine(Lingqu(1, 7, "ling", DateTime.Now).ToString(dateTimeFormat));
 
 
 

@@ -697,9 +697,45 @@ namespace BooksManageSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //测试函数
 
-            MessageBox.Show(con.TestCon());
+            MessageBox.Show(DateTime.Now.ToString());
+
+
+            //测试函数
+            using (OleDbCommand comm = new OleDbCommand(@"select books_count from books where id = @id"))
+            {
+
+                comm.Parameters.AddWithValue("@id", 1);
+
+                MessageBox.Show("id参数：" + DBHelper.ExecuteScalar(comm).ToString());
+            }
+            using (OleDbCommand comm = new OleDbCommand(@"update books set books_count = @ccount where id = @id"))
+            {
+
+                comm.Parameters.AddWithValue("@ccount", 999);
+                comm.Parameters.AddWithValue("@id", 1);
+
+                MessageBox.Show("id参数、数量参数：" + DBHelper.ExecuteNonQuery(comm).ToString());
+            }
+
+            using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values (@id,@op,@op_date,@op_count,@opertor,@after_op_count)"))
+            {
+
+                comm.Parameters.AddWithValue("@id", 1);
+                comm.Parameters.AddWithValue("@op", (int)EnumOP.领);
+                comm.Parameters.AddWithValue("@op_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                comm.Parameters.AddWithValue("@op_count", 99);
+                comm.Parameters.AddWithValue("@opertor", "Hansi");
+                comm.Parameters.AddWithValue("@after_op_count", 22);
+
+                //insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values (?,?,?,?,?,?)
+                //insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values (1,2,'2018/2/6 10:48:09',1,'afsdf',1)
+                //INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+                MessageBox.Show("多个参数，包含时间: 成功！" + DBHelper.ExecuteNonQuery(comm).ToString());
+            }
+
+
+            //MessageBox.Show(con.TestCon());
         }
     }
 }
