@@ -147,10 +147,21 @@ namespace BooksManageSystem
                 DBHelper.ExecuteNonQuery(comm);
             }
 
-            using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values 
-(" + id + "," + ((int)EnumOP.领).ToString() + ",'" + time.ToString() + "'," + count.ToString() + ",'" + opertor + "'," + (c - count) + ")"))
+            using (OleDbCommand comm = new OleDbCommand(@"insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values (@id,@op,@op_date,@op_count,@opertor,@after_op_count)"))
             {
+                comm.Parameters.AddWithValue("@id", (uint)id);
+                comm.Parameters.AddWithValue("@op", (int)EnumOP.领);
+                comm.Parameters.AddWithValue("@op_date", time.ToString());
+                comm.Parameters.AddWithValue("@op_count", count);
+                comm.Parameters.AddWithValue("@opertor", opertor);
+                comm.Parameters.AddWithValue("@after_op_count", c - count);
+
+
+                //insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values (?,?,?,?,?,?)
+                //insert into operate (op_book_no,op,op_date,op_count,operator,after_op_count) values (1,2,'2018/2/6 10:48:09',1,'afsdf',1)
                 //INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+
+
                 DBHelper.ExecuteNonQuery(comm);
                 return c - count;
             }
@@ -192,13 +203,6 @@ namespace BooksManageSystem
                     return c + count;
                 }
             }
-
-
-
-
-
-
-
 
 
         }
