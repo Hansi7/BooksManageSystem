@@ -605,5 +605,25 @@ namespace BooksManageSystem
             return DBHelper.ExecuteNonQuery(new OleDbCommand("delete from booklist where lid = " + id));
         }
         #endregion
+
+        public string TestCon()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("queryCountByID");
+            sb.AppendLine(queryCountByID(1).ToString());
+            sb.AppendLine("Lingqu");
+            sb.AppendLine(Lingqu(1, 7, "ling", DateTime.Now).ToString());
+
+
+
+
+
+
+
+            return sb.ToString();
+
+
+        }
+
     }
 }

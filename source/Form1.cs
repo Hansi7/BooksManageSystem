@@ -697,7 +697,9 @@ namespace BooksManageSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //测试函数
+
+            MessageBox.Show(con.TestCon());
         }
     }
 }
