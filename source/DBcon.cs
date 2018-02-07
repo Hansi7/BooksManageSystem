@@ -156,7 +156,7 @@ namespace BooksManageSystem
             {
                 comm.Parameters.AddWithValue("@id", (uint)id);
                 comm.Parameters.AddWithValue("@op", (int)EnumOP.领);
-                comm.Parameters.AddWithValue("@op_date", time.ToString());
+                comm.Parameters.AddWithValue("@op_date", time.ToString(dateTimeFormat));
                 comm.Parameters.AddWithValue("@op_count", count);
                 comm.Parameters.AddWithValue("@opertor", opertor);
                 comm.Parameters.AddWithValue("@after_op_count", c - count);
